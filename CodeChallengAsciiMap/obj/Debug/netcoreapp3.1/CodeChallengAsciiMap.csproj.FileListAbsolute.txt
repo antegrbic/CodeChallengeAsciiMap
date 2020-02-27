@@ -1,0 +1,11 @@
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\bin\Debug\netcoreapp3.1\CodeChallengAsciiMap.exe
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\bin\Debug\netcoreapp3.1\CodeChallengAsciiMap.deps.json
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\bin\Debug\netcoreapp3.1\CodeChallengAsciiMap.runtimeconfig.json
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\bin\Debug\netcoreapp3.1\CodeChallengAsciiMap.runtimeconfig.dev.json
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\bin\Debug\netcoreapp3.1\CodeChallengAsciiMap.dll
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\bin\Debug\netcoreapp3.1\CodeChallengAsciiMap.pdb
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\obj\Debug\netcoreapp3.1\CodeChallengAsciiMap.csprojAssemblyReference.cache
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\obj\Debug\netcoreapp3.1\CodeChallengAsciiMap.AssemblyInfoInputs.cache
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\obj\Debug\netcoreapp3.1\CodeChallengAsciiMap.AssemblyInfo.cs
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\obj\Debug\netcoreapp3.1\CodeChallengAsciiMap.dll
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengAsciiMap\obj\Debug\netcoreapp3.1\CodeChallengAsciiMap.pdb
