@@ -1242,11 +1242,38 @@
       "CodeChallengeAsciiMap.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "CodeChallengeAsciiMap.Utility": "1.0.0",
+          "CodeChallengeAsciiMap.Validation": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/CodeChallengeAsciiMap.Core.dll": {}
         },
         "runtime": {
           "bin/placeholder/CodeChallengeAsciiMap.Core.dll": {}
+        }
+      },
+      "CodeChallengeAsciiMap.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CodeChallengeAsciiMap.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CodeChallengeAsciiMap.Utility.dll": {}
+        }
+      },
+      "CodeChallengeAsciiMap.Validation/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "CodeChallengeAsciiMap.Utility": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CodeChallengeAsciiMap.Validation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CodeChallengeAsciiMap.Validation.dll": {}
         }
       }
     }
@@ -4598,6 +4625,16 @@
       "type": "project",
       "path": "../CodeChallengeAsciiMap.Core/CodeChallengeAsciiMap.Core.csproj",
       "msbuildProject": "../CodeChallengeAsciiMap.Core/CodeChallengeAsciiMap.Core.csproj"
+    },
+    "CodeChallengeAsciiMap.Utility/1.0.0": {
+      "type": "project",
+      "path": "../CodeChallengeAsciiMap.Utility/CodeChallengeAsciiMap.Utility.csproj",
+      "msbuildProject": "../CodeChallengeAsciiMap.Utility/CodeChallengeAsciiMap.Utility.csproj"
+    },
+    "CodeChallengeAsciiMap.Validation/1.0.0": {
+      "type": "project",
+      "path": "../CodeChallengeAsciiMap.Validation/CodeChallengeAsciiMap.Validation.csproj",
+      "msbuildProject": "../CodeChallengeAsciiMap.Validation/CodeChallengeAsciiMap.Validation.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4615,11 +4652,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMapUnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMapUnitTests.csproj",
       "projectName": "CodeChallengeAsciiMapUnitTests",
-      "projectPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMapUnitTests.csproj",
+      "projectPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMapUnitTests.csproj",
       "packagesPath": "C:\\Users\\Toni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMapUnitTests\\obj\\",
+      "outputPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4638,8 +4675,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengAsciiMap\\CodeChallengeAsciiMap.csproj": {
-              "projectPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengAsciiMap\\CodeChallengeAsciiMap.csproj"
+            "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengAsciiMap\\CodeChallengeAsciiMap.csproj": {
+              "projectPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengAsciiMap\\CodeChallengeAsciiMap.csproj"
             }
           }
         }

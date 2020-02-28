@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using CodeChallengeAsciiMap.Core.Helper;
 using CodeChallengeAsciiMap.Core.Interfaces;
+using CodeChallengeAsciiMap.Utility;
+using CodeChallengeAsciiMap.Validation;
+using CodeChallengeAsciiMap.Validation.Interfaces;
 
 namespace CodeChallengeAsciiMap.Core
 {
     public class AsciiMapSolver : ISolver
     {
+        private IValidator _validator;
+        
         private List<Position> _collectedLetters = new List<Position>();
         private string _pathAsString = String.Empty;
 
@@ -29,35 +33,58 @@ namespace CodeChallengeAsciiMap.Core
 
         public AsciiMapSolver() { }
 
-        public AsciiMapSolver(string fileName)
+        public AsciiMapSolver(IValidator validator)
         {
-            string[] lines = File.ReadAllLines(fileName);
+            _validator = validator;
+        }
 
-            ValidateStartAndEndCharacterExists(lines);
+        public ValidationResult SetFileToProcess(string fileName)
+        {
+            if (!_validator.ValidateFileExists(fileName))
+                return new ValidationResult(ValidationStatusEnum.FileMissing, "File is missing from given location!");
+
+            var lines = File.ReadAllLines(fileName);
+            
+            var validationResult =_validator.ValidateStartAndEndCharacterExists(lines);
+            if (validationResult.ValidationStatus != ValidationStatusEnum.Success)
+                return validationResult;
 
             textAsMatrix = new char[FileHelper.NumberOfLines(fileName)][];
 
             FileHelper.CopyFileContentToTwoDimArray(lines, textAsMatrix);
+            return validationResult;
         }
 
-        public void SolveProblem()
+        public ValidationResult SolveProblem(string fileName)
         {
+            var fileValidationResult = SetFileToProcess(fileName);
+
+            if (fileValidationResult.IsFailed())
+                return fileValidationResult;
+
             FindStartingPosition(out int k, out int l);
 
             InitializeStartingPosition(k, l);
 
             while (currentPosition.Character != MapHelper.endPositionChar)
             {
-                DecideNextMove();
+                var validationResult = DecideNextMove();
+
+                if (validationResult.ValidationStatus != ValidationStatusEnum.Success)
+                    return validationResult;
          
                 AdjustPath();
             }
 
             FinishPath();
+
+            return new ValidationResult(ValidationStatusEnum.Success, "Success");
         }
 
-        private void DecideNextMove()
+        private ValidationResult DecideNextMove()
         {
+            var validationResult = new ValidationResult();
+
             switch (currentPosition.Character)
             {
 
@@ -65,32 +92,34 @@ namespace CodeChallengeAsciiMap.Core
                 case MapHelper.intersectionChar:
                 case var c when MapHelper.letters.Contains((char)currentPosition.Character):
 
-                    HandleNodes();
+                    validationResult = HandleNodes();
 
                     break;
 
                 case MapHelper.verticalChar:
                 case MapHelper.horizontalChar:
 
-                    HandleEdges();
+                    validationResult = HandleEdges();
 
                     break;
                 default:
-                    throw new Exception($"Invalid field {currentPosition.Character} encountered at position ({currentPosition.i},{currentPosition.j})");
+                    return new ValidationResult(ValidationStatusEnum.UnknownCharacterEncountered, $"Invalid field {currentPosition.Character} encountered at position ({currentPosition.i},{currentPosition.j})");
             }
+
+            return validationResult;
         }
 
-        public void AdjustPath()
+        private void AdjustPath()
         {
             _pathAsString += previousPosition.Character;
         }
 
-        public void FinishPath()
+        private void FinishPath()
         {
             _pathAsString += MapHelper.endPositionChar;
         }
 
-        private void HandleNodes()
+        private ValidationResult HandleNodes()
         {
             var possiblePosition = new List<Position>
                         {
@@ -106,7 +135,7 @@ namespace CodeChallengeAsciiMap.Core
                 _collectedLetters.Add(currentPosition);
 
             if (validPositions.Count == 0)
-                throw new Exception($"No available directions from ({currentPosition.i},{currentPosition.j}) position!");
+                return new ValidationResult(ValidationStatusEnum.NoAvailableDirections, $"No available directions from ({currentPosition.i},{currentPosition.j}) position!");
 
             // special case where alphabetic letter is in middle of an intersection
             // travelling must continue in same direction as in the previous position
@@ -114,27 +143,31 @@ namespace CodeChallengeAsciiMap.Core
             {
                 var position = validPositions.FindAll(x => x.Direction == previousPosition.Direction);
                 if (position.Count != 1)
-                    throw new Exception($"No available directions from ({currentPosition.i},{currentPosition.j}) position!");
+                    return new ValidationResult(ValidationStatusEnum.NoAvailableDirections, $"No available directions from ({currentPosition.i},{currentPosition.j}) position!");
 
                 previousPosition = currentPosition;
                 currentPosition = position[0];
             }
             else if (validPositions.Count > 1)
-                throw new Exception($"Multiple directions from  ({currentPosition.i},{currentPosition.j}) position!");
+                return new ValidationResult(ValidationStatusEnum.MultipleDirection, $"Multiple directions from ({ currentPosition.i },{ currentPosition.j}) position!");
             else
             {
                 previousPosition = currentPosition;
                 currentPosition = validPositions[0];
             }
+
+            return new ValidationResult(ValidationStatusEnum.Success, "Success");
         }
 
-        private void HandleEdges()
+        private ValidationResult HandleEdges()
         {
             previousPosition = currentPosition;
             currentPosition = TryAndGetNextPosition(currentPosition.i, currentPosition.j, currentPosition.Direction);
 
             if (!IsValid(currentPosition))
-                throw new Exception($"Invalid field {currentPosition.Character} encountered at position ({currentPosition.i},{currentPosition.j})");
+                return new ValidationResult(ValidationStatusEnum.UnknownCharacterEncountered, $"Invalid field {currentPosition.Character} encountered at position ({currentPosition.i},{currentPosition.j})");
+
+            return new ValidationResult(ValidationStatusEnum.Success, "Success");
         }
 
         private bool PreviouslyAddedLetter(Position p)
@@ -182,7 +215,7 @@ namespace CodeChallengeAsciiMap.Core
             return null;
         }
 
-        internal Position TryAndGetPositionFromMatrix(int k, int l, DirectionEnum direction)
+        private Position TryAndGetPositionFromMatrix(int k, int l, DirectionEnum direction)
         {
             if ((0 <= k && k < textAsMatrix.GetLength(0)) && (0 <= l && l < textAsMatrix[k].Length))
             {
@@ -192,7 +225,7 @@ namespace CodeChallengeAsciiMap.Core
             return new Position(k, l, null, direction);
         }
 
-        internal void FindStartingPosition(out int k, out int l)
+        private void FindStartingPosition(out int k, out int l)
         {
             k = 0; l = 0;
 
@@ -209,28 +242,6 @@ namespace CodeChallengeAsciiMap.Core
                     }
                 }
             }
-        }
-
-        public static void ValidateStartAndEndCharacterExists(string[] lines)
-        {
-            int startCharNum = 0;
-            int endCharNum = 0;
-
-            foreach (var line in lines)
-            {
-                if (line.Contains(MapHelper.startingPositionChar)) startCharNum++;
-                if (line.Contains(MapHelper.endPositionChar)) endCharNum++;
-            }
-
-            if (startCharNum == 0)
-                throw new Exception("Couldn't find start position!");
-            else if (startCharNum > 1)
-                throw new Exception("Multiple start position detected!");
-
-            if (endCharNum == 0)
-                throw new Exception("Couldn't find end position!");
-            else if (endCharNum > 1)
-                throw new Exception("Multiple end position detected!");
         }
     }
 }

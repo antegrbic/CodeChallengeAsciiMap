@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChallengeAsciiMap", "CodeChallengAsciiMap\CodeChallengeAsciiMap.csproj", "{BEDEF773-9EF0-4D85-8B3D-C641D5F9439C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallengeAsciiMapUnitTests", "CodeChallengeAsciiMapUnitTests\CodeChallengeAsciiMapUnitTests.csproj", "{019DA800-8DF4-4D4A-B1A6-038D9B40758D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChallengeAsciiMapUnitTests", "CodeChallengeAsciiMapUnitTests\CodeChallengeAsciiMapUnitTests.csproj", "{019DA800-8DF4-4D4A-B1A6-038D9B40758D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallengeAsciiMap.Core", "CodeChallengeAsciiMap.Core\CodeChallengeAsciiMap.Core.csproj", "{642DC62E-4AAE-4F8E-8AB4-80E96954DCEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChallengeAsciiMap.Core", "CodeChallengeAsciiMap.Core\CodeChallengeAsciiMap.Core.csproj", "{642DC62E-4AAE-4F8E-8AB4-80E96954DCEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallengeAsciiMap.Validation", "CodeChallengeAsciiMap.Validation\CodeChallengeAsciiMap.Validation.csproj", "{E0CA7FB0-5E1D-41F3-AA32-C2E9347D62DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallengeAsciiMap.Utility", "CodeChallengeAsciiMap.Utility\CodeChallengeAsciiMap.Utility.csproj", "{09FCDCB0-0E2C-41D2-8716-A2960267CE71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{642DC62E-4AAE-4F8E-8AB4-80E96954DCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{642DC62E-4AAE-4F8E-8AB4-80E96954DCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{642DC62E-4AAE-4F8E-8AB4-80E96954DCEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0CA7FB0-5E1D-41F3-AA32-C2E9347D62DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0CA7FB0-5E1D-41F3-AA32-C2E9347D62DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0CA7FB0-5E1D-41F3-AA32-C2E9347D62DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0CA7FB0-5E1D-41F3-AA32-C2E9347D62DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09FCDCB0-0E2C-41D2-8716-A2960267CE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09FCDCB0-0E2C-41D2-8716-A2960267CE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09FCDCB0-0E2C-41D2-8716-A2960267CE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09FCDCB0-0E2C-41D2-8716-A2960267CE71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
