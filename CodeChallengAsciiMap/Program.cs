@@ -21,6 +21,7 @@ namespace CodeChallengAsciiMap
                 {
                     Console.WriteLine($"Collected letters: {solver.CollectedLetters}");
                     Console.WriteLine($"Path as string: {solver.PathAsString}");
+                    return;
                 }
 
                 PrintErrorMessage(result);
@@ -40,7 +41,7 @@ namespace CodeChallengAsciiMap
         public static void PrintErrorMessage(ValidationResult result)
         {
             Console.WriteLine("Error while processing - see more detailed error message below");
-            Console.WriteLine(nameof(result.ValidationStatus) + result.AdditionalMessage);
+            Console.WriteLine($"{result.ValidationStatus.ToString() } - {result.AdditionalMessage}.");
         }
     }
 }
