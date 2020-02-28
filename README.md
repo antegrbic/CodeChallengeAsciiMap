@@ -1,5 +1,6 @@
 # CodeChallengeAsciiMap
- Solution for AsciiMap coding challenge
+ Solution for AsciiMap coding challenge. Stuff is organized in 4 areas - Core, Tests, Utiliy and Validation.
+ Core contains domain logic for this problem - classes AsciiMapSolver and Position. Tests contains (currently) 5 valid and 6 invalid examples. Utiliy contains various helper classes. Validator class for AsciiMapSolver and ValidationResult are located in CodeChallengeAsciiMap.Validation.
 
 Challenge text:
 
