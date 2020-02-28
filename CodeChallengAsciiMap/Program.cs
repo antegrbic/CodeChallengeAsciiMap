@@ -13,9 +13,9 @@ namespace CodeChallengAsciiMap
 
             try
             {               
-                InitializeSolver(out AsciiMapSolver solver);
+                InitializeSolver(fileName, out AsciiMapSolver solver);
 
-                var result = solver.SolveProblem(fileName);
+                var result = solver.SolveProblem();
 
                 if(result.ValidationStatus == ValidationStatusEnum.Success)
                 {
@@ -33,9 +33,10 @@ namespace CodeChallengAsciiMap
             }
         }
 
-        public static void InitializeSolver(out AsciiMapSolver solver)
+        public static void InitializeSolver(string fileName, out AsciiMapSolver solver)
         {
             solver = new AsciiMapSolver(new Validator());
+            solver.SetFile(fileName);
         }
 
         public static void PrintErrorMessage(ValidationResult result)

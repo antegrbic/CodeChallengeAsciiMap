@@ -19,7 +19,8 @@ namespace CodeChallengeAsciiMapUnitTests.Examples
         public void InvalidExample1()
         {
             var asciiMapSolver = new AsciiMapSolver(new Validator());
-            var validationResult = asciiMapSolver.SolveProblem(_filePath + "\\ascii_map_unittest1_invalid.txt");
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest1_invalid.txt");
+            var validationResult = asciiMapSolver.SolveProblem();
 
             Assert.That(validationResult.AdditionalMessage, Is.EqualTo("Couldn't find end position!"));
         }
@@ -28,7 +29,8 @@ namespace CodeChallengeAsciiMapUnitTests.Examples
         public void InvalidExample2()
         {
             var asciiMapSolver = new AsciiMapSolver(new Validator());
-            var validationResult = asciiMapSolver.SolveProblem(_filePath + "\\ascii_map_unittest2_invalid.txt");
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest2_invalid.txt");
+            var validationResult = asciiMapSolver.SolveProblem();
 
             Assert.That(validationResult.AdditionalMessage, Is.EqualTo("Couldn't find start position!"));
         }
@@ -38,7 +40,8 @@ namespace CodeChallengeAsciiMapUnitTests.Examples
         {
             var asciiMapSolver = new AsciiMapSolver(new Validator());
 
-            ValidationResult vr = asciiMapSolver.SolveProblem(_filePath + "\\ascii_map_unittest3_invalid.txt");
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest3_invalid.txt");
+            ValidationResult vr = asciiMapSolver.SolveProblem();
             Assert.That(vr.AdditionalMessage, Is.EqualTo("Invalid field   encountered at position (5,4)"));
         }
 
@@ -46,8 +49,9 @@ namespace CodeChallengeAsciiMapUnitTests.Examples
         public void InvalidExample4()
         {
             var asciiMapSolver = new AsciiMapSolver(new Validator());
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest4_invalid.txt");
 
-            ValidationResult vr = asciiMapSolver.SolveProblem(_filePath + "\\ascii_map_unittest4_invalid.txt");
+            ValidationResult vr = asciiMapSolver.SolveProblem();
             Assert.That(vr.AdditionalMessage, Is.EqualTo("Multiple directions from (5,4) position!"));
         }
 
@@ -55,7 +59,8 @@ namespace CodeChallengeAsciiMapUnitTests.Examples
         public void InvalidExample5()
         {
             var asciiMapSolver = new AsciiMapSolver(new Validator());
-            var validationResult = asciiMapSolver.SolveProblem(_filePath + "\\ascii_map_unittest5_invalid.txt");
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest5_invalid.txt");
+            var validationResult = asciiMapSolver.SolveProblem();
 
             Assert.That(validationResult.AdditionalMessage, Is.EqualTo("Multiple end position detected!"));
         }
@@ -64,7 +69,8 @@ namespace CodeChallengeAsciiMapUnitTests.Examples
         public void InvalidExample6()
         {
             var asciiMapSolver = new AsciiMapSolver(new Validator());
-            var validationResult = asciiMapSolver.SolveProblem(_filePath + "\\ascii_map_unittest6_invalid.txt");
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest6_invalid.txt");
+            var validationResult = asciiMapSolver.SolveProblem();
 
             Assert.That(validationResult.AdditionalMessage, Is.EqualTo("Multiple start position detected!"));
 

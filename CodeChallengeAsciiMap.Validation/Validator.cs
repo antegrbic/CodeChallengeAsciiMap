@@ -1,13 +1,14 @@
 ﻿using CodeChallengeAsciiMap.Utility;
 using CodeChallengeAsciiMap.Validation.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace CodeChallengeAsciiMap.Validation
 {
     public class Validator : IValidator
-    {
+    {        
         public Validator() { }
 
         public bool ValidateFileExists(string fileName)

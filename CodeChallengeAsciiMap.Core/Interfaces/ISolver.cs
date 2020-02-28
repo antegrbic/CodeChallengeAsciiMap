@@ -7,6 +7,6 @@ namespace CodeChallengeAsciiMap.Core.Interfaces
 {
     public interface ISolver
     {
-        ValidationResult SolveProblem(string fileName);
+        ValidationResult SolveProblem();
     }
 }

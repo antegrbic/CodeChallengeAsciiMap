@@ -4652,9 +4652,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMapUnitTests.csproj",
-      "projectName": "CodeChallengeAsciiMapUnitTests",
-      "projectPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMapUnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMap.Tests.csproj",
+      "projectName": "CodeChallengeAsciiMap.Tests",
+      "projectPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\CodeChallengeAsciiMap.Tests.csproj",
       "packagesPath": "C:\\Users\\Toni\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Toni\\source\\repos\\CodeChallengAsciiMap\\CodeChallengeAsciiMap\\CodeChallengeAsciiMapUnitTests\\obj\\",
       "projectStyle": "PackageReference",

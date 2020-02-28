@@ -1,6 +1,3 @@
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.csprojAssemblyReference.cache
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.AssemblyInfoInputs.cache
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.AssemblyInfo.cs
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMap.exe
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
@@ -17,11 +14,11 @@ C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChalle
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\Examples\ValidExamples\ascii_map_unittest3.txt
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\Examples\ValidExamples\ascii_map_unittest4.txt
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\Examples\ValidExamples\ascii_map_unittest5.txt
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.deps.json
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.runtimeconfig.json
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.runtimeconfig.dev.json
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.dll
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.pdb
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.deps.json
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.runtimeconfig.json
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.runtimeconfig.dev.json
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.dll
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.pdb
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.InternalAbstractions.dll
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll
@@ -109,6 +106,9 @@ C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChalle
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMap.Core.pdb
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMap.Utility.pdb
 C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\bin\Debug\netcoreapp3.1\CodeChallengeAsciiMap.Validation.pdb
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.csproj.CopyComplete
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.dll
-C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapUnitTests.pdb
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.csprojAssemblyReference.cache
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.AssemblyInfoInputs.cache
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.AssemblyInfo.cs
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.csproj.CopyComplete
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.dll
+C:\Users\Toni\source\repos\CodeChallengAsciiMap\CodeChallengeAsciiMap\CodeChallengeAsciiMapUnitTests\obj\Debug\netcoreapp3.1\CodeChallengeAsciiMapTests.pdb
