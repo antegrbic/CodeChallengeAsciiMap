@@ -73,5 +73,29 @@ namespace CodeChallengeAsciiMapUnitTests
             Assert.IsTrue(asciiMapSolver.CollectedLetters == "BEEFCAKE");
             Assert.IsTrue(asciiMapSolver.PathAsString == "@---+B||E--+|E|+--F--+|C|||A--|-----K|||+--E--Ex");
         }
+
+        [Test]
+        public void ValidExample6()
+        {
+            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
+
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest6.txt");
+            asciiMapSolver.SolveProblem();
+
+            Assert.IsTrue(asciiMapSolver.CollectedLetters == "A");
+            Assert.IsTrue(asciiMapSolver.PathAsString == "@----+||+--A--x");
+        }
+
+        [Test]
+        public void ValidExample7()
+        {
+            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
+
+            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest7.txt");
+            asciiMapSolver.SolveProblem();
+
+            Assert.IsTrue(asciiMapSolver.CollectedLetters == "AB");
+            Assert.IsTrue(asciiMapSolver.PathAsString == "@|+--A--B-+||+---+||x");
+        }
     }
 }

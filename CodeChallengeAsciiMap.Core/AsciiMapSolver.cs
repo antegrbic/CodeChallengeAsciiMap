@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CodeChallengeAsciiMap.Core.Interfaces;
 using CodeChallengeAsciiMap.Utility;
 using CodeChallengeAsciiMap.Validation;
@@ -177,6 +178,8 @@ namespace CodeChallengeAsciiMap.Core
 
             var lines = File.ReadAllLines(_fileName);
 
+            TabsToSpaces(lines);
+
             var validationResult = _validator.ValidateStartAndEndCharacterExists(lines);
             if (validationResult.ValidationStatus != ValidationStatusEnum.Success)
                 return validationResult;
@@ -277,6 +280,14 @@ namespace CodeChallengeAsciiMap.Core
             }
 
             return new Tuple<int, int>(k, l);
+        }
+
+        public void TabsToSpaces(string[] lines)
+        {
+            for(int i = 0; i < lines.Length; i++)
+            {
+                lines[i] = FileHelper.TabsToSpaces(lines[i]);
+            }
         }
     }
 }

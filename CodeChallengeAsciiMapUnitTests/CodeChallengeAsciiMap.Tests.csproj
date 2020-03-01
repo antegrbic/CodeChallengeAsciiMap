@@ -50,6 +50,12 @@
     <None Update="Examples\ValidExamples\ascii_map_unittest5.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Examples\ValidExamples\ascii_map_unittest6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Examples\ValidExamples\ascii_map_unittest7.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
