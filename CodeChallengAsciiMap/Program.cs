@@ -1,4 +1,5 @@
 ﻿using CodeChallengeAsciiMap.Core;
+using CodeChallengeAsciiMap.Utility;
 using CodeChallengeAsciiMap.Validation;
 using System;
 
@@ -12,15 +13,14 @@ namespace CodeChallengAsciiMap
             var fileName = Console.ReadLine();
 
             try
-            {               
-                InitializeSolver(fileName, out AsciiMapSolver solver);
-
-                var result = solver.SolveProblem();
+            {
+                var solverFacade = new SolverFacade();
+                var result = solverFacade.ProcessFile(fileName);
 
                 if(result.ValidationStatus == ValidationStatusEnum.Success)
                 {
-                    Console.WriteLine($"Collected letters: {solver.CollectedLetters}");
-                    Console.WriteLine($"Path as string: {solver.PathAsString}");
+                    Console.WriteLine($"Collected letters: {solverFacade.CollectedLetters}");
+                    Console.WriteLine($"Path as string: {solverFacade.PathAsString}");
                     return;
                 }
 
@@ -31,12 +31,6 @@ namespace CodeChallengAsciiMap
                 Console.WriteLine("Application encountered an unexpected error - see more detailed error message below");
                 Console.WriteLine(e.Message);
             }
-        }
-
-        public static void InitializeSolver(string fileName, out AsciiMapSolver solver)
-        {
-            solver = new AsciiMapSolver(new Validator());
-            solver.SetFile(fileName);
         }
 
         public static void PrintErrorMessage(ValidationResult result)

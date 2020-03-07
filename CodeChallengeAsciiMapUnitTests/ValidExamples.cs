@@ -2,6 +2,7 @@ using NUnit.Framework;
 using CodeChallengeAsciiMap.Core;
 using System.IO;
 using CodeChallengeAsciiMap.Validation;
+using CodeChallengeAsciiMap.Utility;
 
 namespace CodeChallengeAsciiMapUnitTests
 {
@@ -11,91 +12,24 @@ namespace CodeChallengeAsciiMapUnitTests
         [SetUp]
         public void Setup()
         {
-            _filePath = Path.Combine(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory), @"Examples\ValidExamples");
+            _filePath = Path.Combine(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory), @"Examples\ValidExamples\\");
         }
 
-        [Test]
-        public void ValidExample1()
+        [TestCase("ascii_map_unittest1.txt", "AB", "@---+|AB|+--x")]
+        [TestCase("ascii_map_unittest2.txt", "", "@|x")]
+        [TestCase("ascii_map_unittest3.txt", "ACB", "@---A---+|C|+---+|+-B-x")]
+        [TestCase("ascii_map_unittest4.txt", "ABCD", "@|A+---B--+|+----C|-||+---D--+|x")]
+        [TestCase("ascii_map_unittest5.txt", "BEEFCAKE", "@---+B||E--+|E|+--F--+|C|||A--|-----K|||+--E--Ex")]
+        [TestCase("ascii_map_unittest6.txt", "A", "@----+||+--A--x")]
+        [TestCase("ascii_map_unittest7.txt", "AB", "@|+--A--B-+||+---+||x")]
+        public void ValidExampleCheck(string fileName, string collectedLetters, string pathAsString)
         {
-            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
+            var solverFacade = new SolverFacade();
+            var result = solverFacade.ProcessFile(_filePath + fileName);
 
-            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest1.txt");
-            asciiMapSolver.SolveProblem();
-
-            Assert.IsTrue(asciiMapSolver.CollectedLetters == "AB");
-            Assert.IsTrue(asciiMapSolver.PathAsString == "@---+|AB|+--x");
+            Assert.IsTrue(solverFacade.CollectedLetters == collectedLetters);
+            Assert.IsTrue(solverFacade.PathAsString == pathAsString);
         }
 
-        [Test]
-        public void ValidExample2()
-        {
-            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
-
-            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest2.txt");
-            asciiMapSolver.SolveProblem();
-
-            Assert.IsTrue(asciiMapSolver.CollectedLetters == "");
-            Assert.IsTrue(asciiMapSolver.PathAsString == "@|x");
-        }
-
-        [Test]
-        public void ValidExample3()
-        {
-            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
-
-            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest3.txt");
-            asciiMapSolver.SolveProblem();
-
-            Assert.IsTrue(asciiMapSolver.CollectedLetters == "ACB");
-            Assert.IsTrue(asciiMapSolver.PathAsString == "@---A---+|C|+---+|+-B-x");
-        }
-
-        [Test]
-        public void ValidExample4()
-        {
-            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
-
-            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest4.txt");
-            asciiMapSolver.SolveProblem();
-
-            Assert.IsTrue(asciiMapSolver.CollectedLetters == "ABCD");
-            Assert.IsTrue(asciiMapSolver.PathAsString == "@|A+---B--+|+----C|-||+---D--+|x");
-        }
-
-        [Test]
-        public void ValidExample5()
-        {
-            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
-
-            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest5.txt");
-            asciiMapSolver.SolveProblem();
-
-            Assert.IsTrue(asciiMapSolver.CollectedLetters == "BEEFCAKE");
-            Assert.IsTrue(asciiMapSolver.PathAsString == "@---+B||E--+|E|+--F--+|C|||A--|-----K|||+--E--Ex");
-        }
-
-        [Test]
-        public void ValidExample6()
-        {
-            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
-
-            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest6.txt");
-            asciiMapSolver.SolveProblem();
-
-            Assert.IsTrue(asciiMapSolver.CollectedLetters == "A");
-            Assert.IsTrue(asciiMapSolver.PathAsString == "@----+||+--A--x");
-        }
-
-        [Test]
-        public void ValidExample7()
-        {
-            AsciiMapSolver asciiMapSolver = new AsciiMapSolver(new Validator());
-
-            asciiMapSolver.SetFile(_filePath + "\\ascii_map_unittest7.txt");
-            asciiMapSolver.SolveProblem();
-
-            Assert.IsTrue(asciiMapSolver.CollectedLetters == "AB");
-            Assert.IsTrue(asciiMapSolver.PathAsString == "@|+--A--B-+||+---+||x");
-        }
     }
 }

@@ -20,12 +20,12 @@ namespace CodeChallengeAsciiMap.Validation
             else return false;
         }
 
-        public ValidationResult ValidateStartAndEndCharacterExists(string[] lines)
+        public ValidationResult ValidateStartAndEndCharacterExists(char[][] textAsMatrix)
         {
             int startCharNum = 0;
             int endCharNum = 0;
 
-            foreach (var line in lines)
+            foreach (var line in textAsMatrix)
             {
                 if (line.Contains(MapHelper.startingPositionChar)) startCharNum++;
                 if (line.Contains(MapHelper.endPositionChar)) endCharNum++;
