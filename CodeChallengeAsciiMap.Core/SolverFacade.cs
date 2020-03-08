@@ -32,14 +32,15 @@ namespace CodeChallengeAsciiMap.Core
         public SolverFacade()
         {
             _txtFileHandler = new TxtFileHandler();
-            _solver = new AsciiMapSolver(new Validator());
+            _solver = new AsciiMapSolver(new Validator(), new AsciiMap());
         }
 
         public ValidationResult ProcessFile(string fileName)
         {
             _txtFileHandler.SetFile(fileName);
+            _solver._asciiMap.SetMap(_txtFileHandler.LoadToCharMatrix());
 
-            return _solver.SolveProblem(_txtFileHandler.LoadToCharMatrix());
+            return _solver.SolveProblem();
         }
     }
 }

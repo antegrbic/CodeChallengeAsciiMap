@@ -39,19 +39,11 @@ namespace CodeChallengeAsciiMap.Utility
 
         public char[][] LoadToCharMatrix()
         {
+            if(String.IsNullOrEmpty(FileName))
+                throw new Exception("File name was not provided!"); 
+
             var lines = LoadFile();
-            var arr = new char[FileHelper.NumberOfLines(_fileName)][];
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                arr[i] = new char[lines[i].Length];
-                for (int j = 0; j < lines[i].Length; j++)
-                {
-                    arr[i][j] = lines[i][j];
-                }
-            }
-
-            return arr;
+            return FileHelper.LoadToCharMatrix(lines);
         }
 
         private string[] LoadFile()

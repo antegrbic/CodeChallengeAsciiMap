@@ -18,7 +18,7 @@ namespace CodeChallengeAsciiMap.Core
         private List<Position> _collectedLetters = new List<Position>();
         private string _pathAsString = String.Empty;
 
-        private char[][] textAsMatrix;
+        public AsciiMap _asciiMap;
 
         private Position currentPosition;
         private Position previousPosition;
@@ -35,14 +35,15 @@ namespace CodeChallengeAsciiMap.Core
 
         public string PathAsString => _pathAsString;  
 
-        public AsciiMapSolver(IValidator validator)
+        public AsciiMapSolver(IValidator validator, AsciiMap asciiMap)
         {
             _validator = validator;
+            _asciiMap = asciiMap;
         }
 
-        public ValidationResult SolveProblem(char[][] data)
+        public ValidationResult SolveProblem()
         {
-            var initValidationResult = Init(data);
+            var initValidationResult = Init();
             if (initValidationResult.IsFailed())
                 return initValidationResult;
 
@@ -61,16 +62,12 @@ namespace CodeChallengeAsciiMap.Core
             return new ValidationResult(ValidationStatusEnum.Success, "Success");
         }
 
-        private ValidationResult Init(char[][] data)
+        private ValidationResult Init()
         {
-            textAsMatrix = data;
-
             var validationResult = ValidateStartEndExist();
             if (validationResult.IsFailed()) return validationResult;
 
-            var startingCoordinates = FindStartingPosition();
-
-            InitializeStartingPosition(startingCoordinates);
+            InitializeStartingPosition();
 
             return new ValidationResult(ValidationStatusEnum.Success, "Success");
         }
@@ -111,7 +108,7 @@ namespace CodeChallengeAsciiMap.Core
 
         private ValidationResult HandleNodes()
         {
-            var availablePositions = FindAvailablePosition();
+            var availablePositions = _asciiMap.FindAvailablePosition(previousPosition, currentPosition);
 
             AdjustCollectedLetters();
 
@@ -128,9 +125,9 @@ namespace CodeChallengeAsciiMap.Core
 
         private ValidationResult HandleEdges()
         {
-            UpdatePositions(currentPosition, TryAndGetNextPosition(currentPosition.i, currentPosition.j, currentPosition.Direction));
+            UpdatePositions(currentPosition, _asciiMap.TryAndGetNextPosition(currentPosition));
 
-            if (!IsValid(currentPosition))
+            if (!_asciiMap.IsPositionValid(currentPosition))
                 return new ValidationResult(ValidationStatusEnum.UnknownCharacterEncountered, $"Invalid field {currentPosition.Character} encountered at position ({currentPosition.i},{currentPosition.j})");
 
             return new ValidationResult(ValidationStatusEnum.Success, "Success");
@@ -146,22 +143,9 @@ namespace CodeChallengeAsciiMap.Core
             return validationResult;
         }
 
-        private List<Position> FindAvailablePosition()
-        {
-            var possiblePosition = new List<Position>
-                        {
-                            TryAndGetPositionFromMatrix(currentPosition.i, currentPosition.j - 1, DirectionEnum.RightToLeft),
-                            TryAndGetPositionFromMatrix(currentPosition.i, currentPosition.j + 1, DirectionEnum.LeftToRight),
-                            TryAndGetPositionFromMatrix(currentPosition.i + 1, currentPosition.j, DirectionEnum.UpDown),
-                            TryAndGetPositionFromMatrix(currentPosition.i - 1, currentPosition.j, DirectionEnum.DownUp)
-                        };
-
-            return possiblePosition.FindAll(x => IsValid(previousPosition, x));
-        }
-
         private ValidationResult AdjustPositions(List<Position> availablePositions)
         {
-            if (IsLetterOnIntersection(availablePositions))
+            if (_asciiMap.IsLetterOnIntersection(previousPosition, currentPosition))
                 return HandleLetterIntersection(availablePositions);
 
             UpdatePositions(currentPosition, availablePositions[0]);
@@ -173,15 +157,10 @@ namespace CodeChallengeAsciiMap.Core
             if (availablePositions.Count == 0)
                 return new ValidationResult(ValidationStatusEnum.NoAvailableDirections, $"No available directions from ({currentPosition.i},{currentPosition.j}) position!");
 
-            if (availablePositions.Count > 1 && !(IsLetter((char)currentPosition.Character) && availablePositions.Exists(x => x.Direction == previousPosition.Direction)))
+            if (availablePositions.Count > 1 && !(_asciiMap.IsLetterOnIntersection(previousPosition, currentPosition)))
                 return new ValidationResult(ValidationStatusEnum.MultipleDirection, $"Multiple directions from ({ currentPosition.i },{ currentPosition.j}) position!");
 
             return new ValidationResult(ValidationStatusEnum.Success, "Success");
-        }
-
-        private bool IsLetterOnIntersection(List<Position> availablePositions)
-        {
-            return availablePositions.Count > 1 && IsLetter((char)currentPosition.Character) && availablePositions.Exists(x => x.Direction == previousPosition.Direction);
         }
 
         private void UpdatePositions(Position oldCurrentPosition, Position newCurrentPosition)
@@ -192,12 +171,12 @@ namespace CodeChallengeAsciiMap.Core
 
         private ValidationResult ValidateStartEndExist()
         {
-            return _validator.ValidateStartAndEndCharacterExists(textAsMatrix);
+            return _validator.ValidateStartAndEndCharacterExists(_asciiMap.Collection);
         }
 
         private void AdjustCollectedLetters()
         {
-            if (IsLetter((char)currentPosition.Character) && !PreviouslyAddedLetter(currentPosition))
+            if (_asciiMap.IsLetter((char)currentPosition.Character) && !PreviouslyAddedLetter(currentPosition))
                 _collectedLetters.Add(currentPosition);
         }
 
@@ -216,79 +195,12 @@ namespace CodeChallengeAsciiMap.Core
             return _collectedLetters.Exists(x => x.IsEqual(p) );
         }
 
-        private void InitializeStartingPosition(Tuple<int, int> coordinates)
+        private void InitializeStartingPosition()
         {
+            var startingCoordinates = _asciiMap.FindStartingPosition();
+
             previousPosition = new Position(-1, -1, null, DirectionEnum.StartingPosition);
-            currentPosition = new Position(coordinates.Item1, coordinates.Item2, MapHelper.startingPositionChar, DirectionEnum.StartingPosition);
-        }
-
-        private bool IsValid(Position previousPosition, Position currentPosition)
-        {
-            return !currentPosition.IsEqual(previousPosition) 
-                && currentPosition.Character != null 
-                && (MapHelper.PossibleEdgeValues.Contains((char)currentPosition.Character) || IsLetter((char)currentPosition.Character));
-        }
-
-        private bool IsValid(Position p)
-        {
-            return p.Character != null 
-                && (MapHelper.PossibleEdgeValues.Contains((char)p.Character) || IsLetter((char)p.Character));
-        }
-
-        private bool IsLetter(char character)
-        {
-            return MapHelper.letters.Contains(character);
-        }
-
-        private Position TryAndGetNextPosition(int i, int j, DirectionEnum direction)
-        {
-            switch (direction)
-            {
-                case DirectionEnum.RightToLeft:
-                    return TryAndGetPositionFromMatrix(i, j - 1, DirectionEnum.RightToLeft);
-                case DirectionEnum.LeftToRight:
-                    return TryAndGetPositionFromMatrix(i, j + 1, DirectionEnum.LeftToRight);
-                case DirectionEnum.UpDown:
-                    return TryAndGetPositionFromMatrix(i + 1, j, DirectionEnum.UpDown);
-                case DirectionEnum.DownUp:
-                    return TryAndGetPositionFromMatrix(i - 1, j, DirectionEnum.DownUp);
-                default:
-                    break;
-            }
-
-            return null;
-        }
-
-        private Position TryAndGetPositionFromMatrix(int k, int l, DirectionEnum direction)
-        {
-            if ((0 <= k && k < textAsMatrix.GetLength(0)) && (0 <= l && l < textAsMatrix[k].Length))
-            {
-                return new Position(k, l, textAsMatrix[k][l], direction);
-            }
-
-            return new Position(k, l, null, direction);
-        }
-
-        private Tuple<int, int> FindStartingPosition()
-        {
-            int k = 0;
-            int l = 0;
-
-            for (int i = 0; i < textAsMatrix.GetLength(0); i += 1)
-            {
-                for (int j = 0; j < textAsMatrix[i].Length; j += 1)
-                {
-                    if (textAsMatrix[i][j] == MapHelper.startingPositionChar)
-                    {
-                        k = i;
-                        l = j;
-
-                        return new Tuple<int, int>(k, l);
-                    }
-                }
-            }
-
-            return new Tuple<int, int>(k, l);
+            currentPosition = new Position(startingCoordinates.Item1, startingCoordinates.Item2, MapHelper.startingPositionChar, DirectionEnum.StartingPosition);
         }
     }
 }

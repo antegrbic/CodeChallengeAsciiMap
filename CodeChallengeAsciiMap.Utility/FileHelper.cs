@@ -43,5 +43,21 @@ namespace CodeChallengeAsciiMap.Utility
             }
             return String.Join("", outTxt);
         }
+
+        public static char[][] LoadToCharMatrix(string[] lines)
+        {
+            var arr = new char[lines.Length][];
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                arr[i] = new char[lines[i].Length];
+                for (int j = 0; j < lines[i].Length; j++)
+                {
+                    arr[i][j] = lines[i][j];
+                }
+            }
+
+            return arr;
+        }
     }
 }
